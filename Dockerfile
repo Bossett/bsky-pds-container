@@ -29,6 +29,12 @@ RUN apt-get update && apt-get install -y \
   sq sqlite3 subversion unzip wget xxd xz-utils zlib1g-dev && \
   apt-get clean all
 
+# for litefs - some repetition in case the above changes
+RUN apt-get update -y && apt-get install -y ca-certificates fuse3 sqlite3 \
+  && apt-get clean all
+
+COPY --from=flyio/litefs:0.5 /usr/local/bin/litefs /bin/litefs
+
 RUN npm install -g pnpm
 RUN cd /app && \
   pnpm install sharp better-sqlite3 && \
@@ -39,5 +45,7 @@ ENV PDS_PORT=3000
 ENV NODE_ENV=production
 # potential perf issues w/ io_uring on this version of node
 ENV UV_USE_IO_URING=0
+
+ENV PDS_DATA_DIRECTORY=/pds/data
 
 ENTRYPOINT /entrypoint.sh

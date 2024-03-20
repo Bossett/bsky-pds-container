@@ -8,3 +8,5 @@ services:
       - PDS_ADMIN_EMAIL=bossett@bossett.io
     volumes:
       - ./pdsdata:/pds
+#      - ./litefs.yml:/etc/litefs.yml
+#    privileged: true # include if using litefs
