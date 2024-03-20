@@ -3,9 +3,11 @@
 COMMAND=""
 
 if test -f "/pds/litefs.yml"; then
+  rm -rf /etc/litefs.yml
+  cp /pds/litefs.yml /etc/litefs.yml
   PDS_DATA_DIRECTORY=/litefs
-  COMMAND="litefs run -config /pds/litefs.yml -- $COMMAND"
-  litefs mount -config /pds/litefs.yml &
+  COMMAND="litefs run -- $COMMAND"
+  litefs mount &
 fi
 
 if ! test -f "/pds/pds.env"; then
