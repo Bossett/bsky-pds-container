@@ -1,19 +1,17 @@
 fuse:
-  dir: "/litefs"
+  dir: "${PDS_DATA_DIRECTORY}"
 
 data:
-  dir: "/pds/data-litefs-persist"
+  dir: "${PDS_DATA_DIRECTORY}-persist"
 
 exit-on-error: true
 
 #
 # -- This lease for docker-compose, etc. --
-#
 lease:
   type: "static"
   advertise-url: "http://primary:20202"
   candidate: true
-#
 # -- This lease for fly.io, etc. --
 #
 # lease:
@@ -21,8 +19,6 @@ lease:
 #   advertise-url: "http://${HOSTNAME}.vm.${FLY_APP_NAME}.internal:20202"
 #   candidate: ${FLY_REGION == PRIMARY_REGION}
 #   promote: true
-#
 #   consul:
 #     url: "${FLY_CONSUL_URL}"
-#     key: "litefs/${FLY_APP_NAME}"
-#
+#     key: "${FLY_APP_NAME}/litefs/"
