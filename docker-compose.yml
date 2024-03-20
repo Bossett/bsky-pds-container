@@ -1,0 +1,10 @@
+version: "3"
+services:
+  app:
+    build: 
+      context: .
+    environment:
+      - PDS_HOSTNAME=pds.bossett.social
+      - PDS_ADMIN_EMAIL=bossett@bossett.io
+    volumes:
+      - ./pdsdata:/pds
