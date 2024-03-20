@@ -16,6 +16,9 @@ fi
 
 if ! test -f "/pds/pds.env"; then
   mkdir -p $PDS_DATA_DIRECTORY
+  mkdir -p $PDS_ACTOR_STORE_DIRECTORY
+  mkdir -p $PDS_BLOBSTORE_DISK_LOCATION
+  
   curl https://raw.githubusercontent.com/bluesky-social/pds/main/installer.sh > /installer.sh
   PATH=/setup:$PATH $COMMAND /bin/bash /installer.sh /pds $PDS_HOSTNAME $PDS_ADMIN_EMAIL
   cd /app

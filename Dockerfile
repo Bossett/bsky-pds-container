@@ -47,5 +47,8 @@ ENV NODE_ENV=production
 ENV UV_USE_IO_URING=0
 
 ENV PDS_DATA_DIRECTORY=/pds/data
+ENV PDS_ACTOR_STORE_DIRECTORY=/pds/actor-store
+ENV PDS_BLOBSTORE_DISK_LOCATION=/pds/blob-store
+
 
 ENTRYPOINT /entrypoint.sh
