@@ -29,8 +29,8 @@ RUN apt-get update && apt-get install -y \
   sq sqlite3 subversion unzip wget xxd xz-utils zlib1g-dev && \
   apt-get clean all
 
-# for litefs - some repetition in case the above changes
-RUN apt-get update -y && apt-get install -y ca-certificates fuse3 sqlite3 \
+# for litefs & init - some repetition in case the above changes
+RUN apt-get update -y && apt-get install -y tini ca-certificates fuse3 sqlite3 \
   && apt-get clean all
 
 COPY --from=flyio/litefs:0.5 /usr/local/bin/litefs /bin/litefs
@@ -50,4 +50,5 @@ ENV PDS_DATA_DIRECTORY=/pds/data
 ENV PDS_ACTOR_STORE_DIRECTORY=/pds/actor-store
 ENV PDS_BLOBSTORE_DISK_LOCATION=/pds/blocks
 
-ENTRYPOINT /entrypoint.sh
+ENTRYPOINT ["tini", "--"]
+CMD ["/entrypoint.sh"]
