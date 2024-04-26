@@ -16,7 +16,7 @@ I am running this on fly.io at the moment - `fly machine exec <machine id> "/pds
 
 ## Backups
 
-I'd recommend you grab a copy of your pds.env in case you need to recreate - you can do this by running `docker compose exec pds cat /pds/pds.env` or `fly machine exec <machine id> "cat /pds/pds.env"` on fly.io. And back up your volumes.
+I'd recommend you grab a copy of your pds.env in case you need to recreate - you can do this by running `docker compose exec pds cat /pds/pds.env` or `fly sftp get /pds/pds.env` on fly.io. And back up your volumes.
 
 ## LiteFS
 

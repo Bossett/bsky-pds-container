@@ -26,7 +26,7 @@ RUN apt-get update && apt-get install -y \
   libncursesw5-dev libpng-dev libpq-dev libreadline-dev libsqlite3-dev \
   libssl-dev libtool libwebp-dev libxml2-dev libxslt1-dev libyaml-dev \
   lsb-release make mercurial musl netbase openssh-client openssl patch procps \
-  sq sqlite3 subversion unzip wget xxd xz-utils zlib1g-dev && \
+  sq sqlite3 subversion unzip wget xxd xz-utils zlib1g-dev bsdmainutils && \
   apt-get clean all
 
 # for litefs & init - some repetition in case the above changes
